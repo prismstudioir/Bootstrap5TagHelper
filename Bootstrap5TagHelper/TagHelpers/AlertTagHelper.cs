@@ -18,7 +18,10 @@ namespace Bootstrap5TagHelper.TagHelpers
             Dark=7
         }
         public string ExtraClass { get; set; }
+        public string Value { get; set; }
+        public string ChildExtraClass { get; set; }
         public string OtherStyle { get; set; }
+        public string ChildOtherStyle { get; set; }
         public AlertType Type { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -27,7 +30,13 @@ namespace Bootstrap5TagHelper.TagHelpers
             output.Attributes.Add("class", "alert alert-" + Type.ToString().ToLower() + " " + ExtraClass);
             output.Attributes.Add("role", "alert");
             output.Attributes.Add("Style", OtherStyle);
-            output.Content.SetContent(Message);
+
+            string child = $"<div class='progress-bar {ChildExtraClass}' style='width:{Value} {ChildOtherStyle}' ></div>";
+
+
+            output.Content.SetHtmlContent(child);
+
+            
         }
     }
 }
