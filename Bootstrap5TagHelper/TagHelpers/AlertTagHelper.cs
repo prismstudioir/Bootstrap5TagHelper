@@ -31,10 +31,9 @@ namespace Bootstrap5TagHelper.TagHelpers
             output.Attributes.Add("role", "alert");
             output.Attributes.Add("Style", OtherStyle);
 
-            string child = $"<div class='progress-bar {ChildExtraClass}' style='width:{Value} {ChildOtherStyle}' ></div>";
 
 
-            output.Content.SetHtmlContent(child);
+            output.Content.SetHtmlContent(Message);
 
             
         }
